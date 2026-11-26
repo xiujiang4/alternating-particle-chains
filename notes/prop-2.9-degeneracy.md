@@ -30,9 +30,9 @@ Some potentials in Conjecture 2.7 lie outside Proposition 2.9. For example, $f(r
   0.924751872822, difference 0.074881419336, and q = e^(−π²/(16a)) ≈ 0.084805 with 32q⁴/(1−q⁴) < 4q.
   All consistent with the values stated in this repository; four additional displacements
   (s = 0.01, −0.125, 0.5, 0.9) also fall below the equidistant value.
-- **Formalization.** The Lean development covers the two proofs over the full infinite chain; the
-  local-instability and Riesz parts are, per the README, not formalized. That is consistent with the
-  files present and is outside the scope of this note.
+- **Formalization.** At the time of this check, Lean covered the two proofs for the fixed four-site
+  counterexample. The subsequent formalization of Gaussian local instability and the current scope
+  are documented in the [Lean proof overview](../lean/README.md).
 
 ## Authorship
 

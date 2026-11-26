@@ -29,7 +29,11 @@ The Fourier proof gives a strict inequality and shows that arbitrarily small dis
 
 ## Lean proof / 形式化证明
 
-Lean 4.28.0 verifies the four-site Gaussian counterexample in two ways. The Fourier argument proves the strict inequality for the specified sites and the Gaussian satisfies the conjecture’s squared-distance hypothesis. A direct real-space proof also gives $E(U)-E(X)>1/36$. Both proofs include every periodic image. 两条机器验证的证明覆盖完整无穷链的高斯反例。手稿中的局部不稳定性与里斯势结论尚未形式化。[Proofs and build instructions / 证明与复现说明](lean/README.md) · [Main theorems / 主定理](lean/Counterexample.lean)
+Lean 4.28.0 verifies the four-site Gaussian counterexample in two ways. The Fourier argument proves the strict inequality for the specified sites and the Gaussian satisfies the conjecture’s squared-distance hypothesis. A direct real-space proof also gives $E(U)-E(X)>1/36$. Both proofs include every periodic image. [Four-site theorems / 四粒子反例](lean/Counterexample.lean)
+
+Lean also verifies Proposition 2 of this manuscript. For $f_a(r)=e^{-ar^2}$ and $0<q=e^{-\pi^2/(16a)}\le 1/4$, moving the two negative sites to $1+s$ and $3-s$ strictly lowers the full energy for every $0<|s|<1$. The case $a=1/4$ uses the original energy definition. [Fixed scale](lean/FourPointCounterexample.lean) · [Full parameter range](lean/GaussianDisplacementEnergy.lean)
+
+Lean 已验证四粒子高斯反例和手稿命题 2。对上述全部高斯参数，两个负号粒子沿指定方向移动时，任意 $0<|s|<1$ 都保持四个粒子的顺序，并严格降低完整无穷链的每粒子能量。实空间证明还给出 $a=1/4$、$s=1/2$ 时能量差大于 $1/36$。指数混合势和里斯势的结论仍待形式化。[证明覆盖与复现说明](lean/README.md)
 
 ## Numerical verification / 数值复核
 

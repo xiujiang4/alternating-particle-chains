@@ -14,7 +14,27 @@ The prime omits the single central self-interaction for each label, $i=j$ and $m
 | `admissible_gaussian_counterexample` | The Gaussian has a profile $F$ in the squared distance with $(-1)^n F^{(n)}(s)>0$ for every $n\geq 0$ and $s\geq 0$. A Fourier proof in the literal coordinates gives $E(X)<E(U)$. 高斯势满足猜想的完全单调条件，移动后的构型能量严格更低。 |
 | `admissible_cells_and_energy_gap` | A direct real-space proof gives $E(U)-E(X)>1/36$. Both cells begin at zero and are strictly ordered. 两个构型满足位置约束，能量差有严格的有理数下界。 |
 
-The Fourier proof periodizes the Gaussian, computes the signed sum over all sixteen ordered pairs, and controls the remaining Fourier modes. The real-space proof groups all images by their distance and bounds the series tail. 两条证明分别在傅里叶空间和实空间控制无穷级数。论文中关于任意小位移的局部不稳定性、指数混合势和里斯势的结论未收入本次形式化。
+The Fourier proof periodizes the Gaussian and computes the signed sum over all sixteen ordered pairs. The real-space proof groups all images by their distance and bounds the series tail. 两条证明分别在傅里叶空间和实空间控制无穷级数。
+
+## Continuous Gaussian displacements / 高斯连续位移
+
+Proposition 2 of the manuscript compares $Y_s=(0,1+s,2,3-s)$ with $U=(0,1,2,3)$ at period four. For $f_a(r)=e^{-ar^2}$, with $a>0$ and $q=e^{-\pi^2/(16a)}$, Lean proves
+
+$$
+0<|s|<1,\qquad 0<q\le \tfrac14
+\quad\Longrightarrow\quad E_{f_a}(Y_s)< E_{f_a}(U).
+$$
+
+| Theorem in `AlternatingChains.Fourier` | What Lean checks / 验证内容 |
+| --- | --- |
+| `displacement_fixed_energy_lt` | All allowed displacements at $a=1/4$, using the original `cellEnergy`. 固定参数下，直接比较原定义的每粒子能量。 |
+| `displacement_energy_lt` | All positive scales whose nome satisfies $q\le1/4$. 所有满足该参数界的正高斯尺度。 |
+| `displacement_energy_lt_of_nome` | Every $q\in(0,1/4]$ gives a positive $a=-\pi^2/(16\log q)$ with precisely this nome and the strict energy inequality. 参数区间包含右端点。 |
+| `cellEnergyAt_quarter` | For all $b,d$, the variable-scale energy at $a=1/4$ equals `cellEnergy b d`. 两种能量定义在固定参数处完全一致。 |
+
+The signed sums include all sixteen ordered pairs and every period image. For each particle only its own central term is removed. `displacement_ordered` proves $0<1+s<2<3-s<4$ for $|s|<1$, including the gap to the next period. `gaussian_images_summable` and `gaussian_images_without_self_hasSum` establish convergence for every $a>0$ and every pair separation. [Fixed scale and ordering](FourPointCounterexample.lean) · [Energy, convergence and variable scale](GaussianDisplacementEnergy.lean)
+
+傅里叶证明沿用仓库的结构因子。只计正频率时，第一频率至少增加 $4qs^2$，其余频率的总损失至多为 $16\pi^2q^4s^2$。在 $q=1/4$ 仍有 $16\pi^2q^3=\pi^2/4<4$，所以对任意接近零的非零位移都能得到严格不等式。实空间级数保留每一项周期像，只去掉四个粒子各自的中心自作用。指数混合势和里斯势的最优性仍待形式化。[Fourier estimates / 傅里叶估计](GaussianDisplacement.lean)
 
 ## Reproduce / 复现
 
@@ -25,9 +45,11 @@ cd lean
 lake exe cache get
 lake build
 lake env lean Counterexample.lean
+lake env lean FourPointCounterexample.lean
+lake env lean GaussianDisplacementEnergy.lean
 ```
 
-The last command prints the axiom dependencies of both top-level theorems. Both reports list exactly `propext`, `Classical.choice`, and `Quot.sound`. 最后一条命令打印两个主定理所依赖的公理。两份报告均只含上述三个标准公理，证明中没有 `sorry` 占位符。
+The three `lake env lean` commands print the axiom dependencies of the two four-site theorems and the three continuous-displacement theorems. Each lists `propext`, `Classical.choice`, and `Quot.sound`. 最后三条命令分别审计原有两个主定理、固定高斯尺度的定理以及全参数范围的两个表述。五份报告均只列出上述三个标准公理。
 
 | Definitions and proofs | Source |
 | --- | --- |
