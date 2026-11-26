@@ -62,3 +62,9 @@ For the Gaussian interaction, equal spacing uniquely minimizes the energy whenev
 ## Exact Gaussian ground-state energy / 交替高斯链的精确基态能量
 
 The pair-insertion threshold from the stability note is the sharp global crystallization threshold. The new note gives the infimum over all even periods on both sides of the transition and characterizes the minimizing residual particle count in sufficiently large finite cells. [English manuscript](en/gaussian-ground-state.md) · [English PDF](en/gaussian-ground-state.pdf) · [中文手稿](zh/gaussian-ground-state.md) · [中文 PDF](zh/gaussian-ground-state.pdf) · [Certificates](code/verify_gaussian_ground_state.py)
+
+## Minimum-spacing study / 最小間距研究
+
+A separately maintained bilingual study classifies six-site minimizers on $7.99\le s\le9$ for every feasible positive minimum spacing, and at the separate point $(s,h)=(22,1/1000)$. The papers, analytic derivations and executable certificates are available in the [independent repository](https://github.com/yuri77521/alternating-gaussian-chains) and its [v1.0.1 release](https://github.com/yuri77521/alternating-gaussian-chains/releases/tag/v1.0.1).
+
+中英文手稿列明一般偶數粒子精確鎖定的充分條件，並逐項說明六粒子全域分類的證明及復現方法。
