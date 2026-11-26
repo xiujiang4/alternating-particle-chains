@@ -72,7 +72,7 @@ The elementary estimates
 
 $$
 T\le\frac q{120},\qquad U\le\frac q{24}
-\tag{1}
+\qquad\text{(1)}
 $$
 
 follow from $n^2\le4^{n-1}$, $n^4\le16^{n-1}$, and $q<1/8$. Since
@@ -83,7 +83,7 @@ g'''(\theta)
 =2c\sum_{n\ge1}n^3q^{n^2}\sin n\theta
 \ge2c(q-U)\sin\theta
 \ge\frac{23}{12}cq\sin\theta>0.
-\tag{2}
+\qquad\text{(2)}
 $$
 
 Thus $g''$ is strictly increasing on $[0,\pi]$.
@@ -111,7 +111,7 @@ With $d=|\Omega\triangle H|$, the distribution function of $|\cos\theta|$ gives
 
 $$
 d^2\le8\pi\mathcal D.
-\tag{3}
+\qquad\text{(3)}
 $$
 
 For even $n$, $J_n(H)=0$; for odd $n$, $J_n(H)=\pm2/n$. Using
@@ -134,7 +134,7 @@ $$
 E-I_4
 \ge cq\mathcal D\left(2-\frac{\mathcal D}{2}-\frac{18T}{q}\right)
 \ge cq\mathcal D\left(\frac{37}{20}-\frac{\mathcal D}{2}\right).
-\tag{4}
+\qquad\text{(4)}
 $$
 
 Now take the legal trial
@@ -153,14 +153,14 @@ E(X_\eta)-I_4
 \le{}&2c(q+T)\eta^2
 \le\frac{121}{60}cq\eta^2.
 \end{aligned}
-\tag{5}
+\qquad\text{(5)}
 $$
 
 For any global minimizer $X$, $E(X)\le E(X_\eta)$. From (4), (5),
 
 $$
 \mathcal D\le\frac{121}{51}\eta^2<5\eta^2.
-\tag{6}
+\qquad\text{(6)}
 $$
 
 Substituting this back into the stronger form of (4), for $0<\eta\le1/4$,
@@ -171,7 +171,7 @@ $$
 \le\frac{968}{813}\eta^2
 <\frac65\eta^2
 \le\frac3{40}.
-\tag{7}
+\qquad\text{(7)}
 $$
 
 ### Clustering
@@ -186,7 +186,7 @@ so every particle satisfies
 
 $$
 r\le R:=\eta+\frac{\pi\mathcal D}{2\eta}.
-\tag{8}
+\qquad\text{(8)}
 $$
 
 For an arbitrary legal configuration with $\mathcal D<5\eta^2$ and
@@ -201,7 +201,7 @@ For the global minimizer, (7) gives
 $$
 R<\left(1+\frac{3\pi}{5}\right)\eta
 \le\frac14+\frac{3\pi}{20}<\frac\pi4.
-\tag{9}
+\qquad\text{(9)}
 $$
 
 The two central arcs $[-\pi/4,\pi/4]$ and $[3\pi/4,5\pi/4]$ contain no particles and $|\cos\theta|\ge\sqrt2/2$ there. If $\Omega$ differed from $H$ on either arc, then $\mathcal D\ge\pi\sqrt2/4>3/40$, contradicting (7). Thus the particles form two clusters at the two endpoints of $H$. The net jumps are $+1$ and $-1$, and alternation forces both cluster sizes to be odd. For four particles the split is therefore $1+3$.
@@ -220,7 +220,7 @@ From (9),
 $$
 |t|,\ |t-u|,\ |t+v|\le2R<\frac\pi2,
 \qquad u+v\le2R<\frac\pi2.
-\tag{10}
+\qquad\text{(10)}
 $$
 
 The two outer gaps are larger than $\eta$, so at a global minimizer $t$ is free and $E_t=0$. Direct differentiation gives
@@ -232,7 +232,7 @@ E_u+E_t&=\frac12\int_0^v
 E_v-E_t&=\frac12\int_0^u
 \big[g''(\pi+t-s)-g''(v+s)\big]\,ds.
 \end{aligned}
-\tag{11}
+\qquad\text{(11)}
 $$
 
 By (10), the first integrand compares, after folding with
@@ -241,7 +241,7 @@ $(0,\pi/2)$. By (2), $g''$ is strictly increasing, so the integrand is positive;
 
 $$
 u=v=\eta.
-\tag{12}
+\qquad\text{(12)}
 $$
 
 Finally, with $u=v=\eta$, Fourier expansion gives
@@ -259,7 +259,7 @@ $$
 &\ge cq\left(\frac{39}{40}-\eta^2\right)
 \ge\frac{73}{80}cq>0.
 \end{aligned}
-\tag{13}
+\qquad\text{(13)}
 $$
 
 Thus the only stationary point in this region is $t=0$. Together with (12), every global minimizer is
