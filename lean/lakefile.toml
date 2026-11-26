@@ -16,6 +16,8 @@ roots = [
   "FourPointCounterexample",
   "GaussianClass",
   "GaussianFourier",
+  "GaussianDisplacement",
+  "GaussianDisplacementEnergy",
   "GaussianMargin",
   "ImageReindex",
   "ParticleEnergy",

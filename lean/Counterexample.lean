@@ -1,6 +1,6 @@
 import GaussianClass
 import GaussianMargin
-import FourPointCounterexample
+import GaussianDisplacementEnergy
 
 /-! The Gaussian satisfies the squared-distance hypothesis and an explicit
 admissible period-four cell improves on the equally spaced cell. -/

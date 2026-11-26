@@ -1,11 +1,11 @@
-import GaussianFourier
+import GaussianDisplacement
 import PeriodFourGaussian
 
 namespace AlternatingChains.Fourier
 
 noncomputable section
 
-private theorem signedSites_hasSum (t : ℝ) (f : ℝ → ℕ → ℝ) (g : ℝ → ℝ)
+theorem signedSites_hasSum (t : ℝ) (f : ℝ → ℕ → ℝ) (g : ℝ → ℝ)
     (h : ∀ x, HasSum (f x) (g x)) :
     HasSum (fun n => signedSites t (fun x => f x n)) (signedSites t g) :=
   ((((h (-2)).sub (h (-t))).add (h 0)).sub (h t))
@@ -114,6 +114,42 @@ theorem four_site_gaussian_in_original_coordinates :
     cellEnergy (3/2) (5/2) < cellEnergy 1 3 := by
   convert four_site_gaussian_counterexample using 1 <;>
     norm_num [particleEnergy, cellPairs, signedSites, cellEnergy, signedCell]
+
+/-- The four gaps, including the wraparound gap to the next period, are positive. -/
+theorem displacement_ordered (s : ℝ) (hs : |s| < 1) :
+    0 < 1+s ∧ 1+s < 2 ∧ 2 < 3-s ∧ 3-s < 4 := by
+  obtain ⟨hl, hr⟩ := abs_lt.mp hs
+  exact ⟨by linarith, by linarith, by linarith, by linarith⟩
+
+/-- Translating both endpoints of every pair by two preserves all differences. -/
+theorem signedCell_displacement_pairs (s : ℝ) (K : ℝ → ℝ) :
+    signedCell (1+s) (3-s) (fun x => signedCell (1+s) (3-s) (fun y => K (x-y))) =
+      cellPairs (1-s) K := by
+  simp only [signedCell, cellPairs, signedSites]
+  ring_nf
+
+theorem displacement_diagonal (s : ℝ) (hs : |s| < 1) :
+    cellPairs (1-s) (fun d => if d = 0 then (1:ℝ) else 0) = 4 := by
+  obtain ⟨hl, hr⟩ := abs_lt.mp hs
+  simp [cellPairs, signedSites, sub_eq_zero, show s ≠ 1 by linarith]
+  split_ifs <;> linarith
+
+/-- Proposition 2 at a = 1/4, in the original infinite-sum energy and coordinates. -/
+theorem displacement_fixed_energy_lt (s : ℝ) (hs₀ : 0 < |s|) (hs₁ : |s| < 1) :
+    cellEnergy (1+s) (3-s) < cellEnergy 1 3 := by
+  have bridge (u : ℝ) (hu : |u| < 1) :
+      cellEnergy (1+u) (3-u) = spatialEnergy (1-u) := by
+    unfold cellEnergy
+    rw [signedCell_displacement_pairs]
+    exact particleEnergy_eq_spatial _ (displacement_diagonal u hu)
+  rw [bridge s hs₁, show cellEnergy 1 3 = spatialEnergy 1 by
+    simpa using bridge 0 (by norm_num)]
+  unfold spatialEnergy
+  rw [spatialPairs_eq, spatialPairs_eq, mul_one]
+  have h := displacement_mass_strict s _ hs₀ hs₁ gaussian_scale.1 gaussian_scale.2
+  linarith only [mul_lt_mul_of_pos_left h (show 0 < Real.sqrt Real.pi / 2 by positivity)]
+
+#print axioms displacement_fixed_energy_lt
 
 end
 
