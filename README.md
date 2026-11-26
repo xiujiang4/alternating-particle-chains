@@ -58,3 +58,7 @@ Questions and corrections are welcome through this repository’s Issues tab. �
 ## Dilute Gaussian chains / 低密度交替高斯链
 
 For the Gaussian interaction, equal spacing uniquely minimizes the energy whenever the dimensionless squared mean spacing satisfies $ah^2\ge4$, for every even period and without an imposed minimum gap. Near minimizers at fixed density converge to uniform spacing in mean absolute gap deviation. [English proof](en/dilute-crystallization.md) · [English PDF](en/dilute-crystallization.pdf) · [中文证明](zh/dilute-crystallization.md) · [中文 PDF](zh/dilute-crystallization.pdf) · [Verification script](code/verify_dilute_crystallization.py)
+
+## Exact Gaussian ground-state energy / 交替高斯链的精确基态能量
+
+The pair-insertion threshold from the stability note is the sharp global crystallization threshold. The new note gives the infimum over all even periods on both sides of the transition and characterizes the minimizing residual particle count in sufficiently large finite cells. [English manuscript](en/gaussian-ground-state.md) · [English PDF](en/gaussian-ground-state.pdf) · [中文手稿](zh/gaussian-ground-state.md) · [中文 PDF](zh/gaussian-ground-state.pdf) · [Certificates](code/verify_gaussian_ground_state.py)
