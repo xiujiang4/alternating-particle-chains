@@ -58,3 +58,9 @@ Questions and corrections are welcome through this repository’s Issues tab. �
 ## Dilute Gaussian chains / 低密度交替高斯链
 
 For the Gaussian interaction, equal spacing uniquely minimizes the energy whenever the dimensionless squared mean spacing satisfies $ah^2\ge4$, for every even period and without an imposed minimum gap. Near minimizers at fixed density converge to uniform spacing in mean absolute gap deviation. [English proof](en/dilute-crystallization.md) · [English PDF](en/dilute-crystallization.pdf) · [中文证明](zh/dilute-crystallization.md) · [中文 PDF](zh/dilute-crystallization.pdf) · [Verification script](code/verify_dilute_crystallization.py)
+
+## Minimum-spacing study / 最小間距研究
+
+A separately maintained bilingual study classifies six-site minimizers on $7.99\le s\le9$ for every feasible positive minimum spacing, and at the separate point $(s,h)=(22,1/1000)$. The papers, analytic derivations and executable certificates are available in the [independent repository](https://github.com/yuri77521/alternating-gaussian-chains) and its [v1.0.1 release](https://github.com/yuri77521/alternating-gaussian-chains/releases/tag/v1.0.1).
+
+中英文手稿列明一般偶數粒子精確鎖定的充分條件，並逐項說明六粒子全域分類的證明及復現方法。
