@@ -24,4 +24,8 @@ roots = [
   "PeriodFourGaussian",
   "PeriodicGaussian",
   "PhysicalCellCore",
+  "ChainEnergy",
+  "KernelFourier",
+  "ChainFourier",
+  "FourBridge",
 ]
