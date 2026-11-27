@@ -36,6 +36,26 @@ The signed sums include all sixteen ordered pairs and every period image. For ea
 
 傅里叶证明沿用仓库的结构因子。只计正频率时，第一频率至少增加 $4qs^2$，其余频率的总损失至多为 $16\pi^2q^4s^2$。在 $q=1/4$ 仍有 $16\pi^2q^3=\pi^2/4<4$，所以对任意接近零的非零位移都能得到严格不等式。实空间级数保留每一项周期像，只去掉四个粒子各自的中心自作用。指数混合势和里斯势的最优性仍待形式化。[Fourier estimates / 傅里叶估计](GaussianDisplacement.lean)
 
+## General Gaussian energy / 一般高斯能量
+
+For an alternating cell of $N=2m>0$ labels, let $L>0$ be the period, $\alpha>0$ the Gaussian parameter and $\sigma_j=(-1)^j$. The ordered energy per particle omits exactly the central image of each label paired with itself. Distinct labels at coincident positions still interact.
+
+With $x_j=X_j/L$, $s=\alpha L^2$, $q=e^{-\pi^2/s}$ and $P_n=\sum_j\sigma_j e^{2\pi i n x_j}$, the general identity is
+
+$$
+E=1-\frac{2}{N}\sqrt{\frac{\pi}{s}}\sum_{n=1}^{\infty}q^{n^2}|P_n|^2 .
+$$
+
+The leading one cancels the central self terms. Electroneutrality removes the zero mode. 对任意正偶数粒子数、正周期和正高斯参数，该公式也适用于不同标签的位置重合。
+
+| Theorem in `GaussianChains` | Scope |
+| --- | --- |
+| `physicalEnergy_eq_imageEnergy`, `physicalEnergy_fourier` | The normalized image sum and the convergent Fourier series for the physical energy. [Physical sum](ChainEnergy.lean) · [Gaussian kernel](KernelFourier.lean) · [Fourier energy](ChainFourier.lean) |
+| `imageEnergy_four_eq_cellEnergyAt`, `imageEnergy_four_quarter` | For distinct coordinates $(0,b,2,d)$ at $L=4$, the normalized width is $16a$. At $a=1/4$ the identity recovers `cellEnergy b d`. [Four-site specialization](FourBridge.lean) |
+| `imageEnergy_four_displacement_lt` | The displacement theorem above in normalized coordinates, with the same nome and displacement hypotheses. [Displacement comparison](FourBridge.lean) |
+
+The distinctness hypothesis matters at collisions. For $(0,0,2,2)$ and $a>0$, `four_collision_conventions` gives `physicalEnergy = 1` and `cellEnergyAt = 0`. The latter identifies central self terms by coordinate equality. 严格有序的四点构型自动满足坐标互异条件。 [Collision example](FourBridge.lean)
+
 ## Reproduce / 复现
 
 Install the Lean toolchain manager `elan`, then run the following from the repository root. The toolchain is Lean 4.28.0. The Lake manifest pins mathlib and its dependencies.
@@ -50,6 +70,14 @@ lake env lean GaussianDisplacementEnergy.lean
 ```
 
 The three `lake env lean` commands print the axiom dependencies of the two four-site theorems and the three continuous-displacement theorems. Each lists `propext`, `Classical.choice`, and `Quot.sound`. 最后三条命令分别审计原有两个主定理、固定高斯尺度的定理以及全参数范围的两个表述。五份报告均只列出上述三个标准公理。
+
+To audit the general energy and its four-site specialization, run these additional commands from `lean/` after the build.
+
+```sh
+lake env lean ChainEnergy.lean
+lake env lean ChainFourier.lean
+lake env lean FourBridge.lean
+```
 
 | Definitions and proofs | Source |
 | --- | --- |
